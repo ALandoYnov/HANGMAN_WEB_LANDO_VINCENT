@@ -1,0 +1,40 @@
+{{define "main"}}
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="UTF-8">
+        <title>Hangman</title>
+        <link href="/static/index.css" rel="stylesheet">
+        <link href="/static/button.css" rel="stylesheet">
+        <link href="/static/main.css" rel="stylesheet">
+    </head>
+    <body>
+    <div class="content">
+        {{if eq .Menu "main"}}
+            <a class="button" href="/rules">
+                <span>Hangman</span>
+            </a>
+                <div>
+                    <a class="button" href="/hangman?difficulty=ez">
+                        <span>Jouer Facile</span>
+                    </a>
+                    <a class="button" href="/hangman?difficulty=trql">
+                        <span>Jouer Normal</span>
+                    </a>
+                    <a class="button" href="/hangman?difficulty=hard">
+                        <span>Jouer Difficile</span>
+                    </a>
+                </div>
+        {{else if eq .Menu "rules"}}
+            {{template "rules" .}}
+        {{else if eq .Menu "game"}}
+            {{template "game" .Clay}}
+        {{else if eq .Menu "win"}}
+            {{template "win" .Clay}}
+        {{else if eq .Menu "lose"}}
+            {{template "lose" .Clay}}
+        {{end}}
+    </div>
+    </body>
+</html>
+{{end}}
